@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MikeSang | Premium Security Consulting</title>
+  <meta name="description" content="MikeSang is a premium security consulting firm protecting startups and enterprises across cybersecurity, AI systems, web applications, and Web3." />
+  <link rel="canonical" href="https://www.mikesang.com/" />
+  <meta property="og:title" content="MikeSang | Securing the Future of Business" />
+  <meta property="og:description" content="Enterprise cybersecurity, AI security, web application security and Web3 security consulting." />
+  <meta property="og:url" content="https://www.mikesang.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2'><path d='M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            ink: '#05070d',
+            panel: '#0b1020',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #05070d; }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Gradient text */
+    .text-gradient {
+      background: linear-gradient(90deg, #22d3ee 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Grid overlay */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+
+    /* Animations */
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes pulseGlow { 0%,100% { opacity: .45; } 50% { opacity: .9; } }
+    @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+    @keyframes ping2 { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.4); opacity: 0; } }
+
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-glow { animation: pulseGlow 4s ease-in-out infinite; }
+    .scanline {
+      position: absolute; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.08), transparent);
+      animation: scan 7s linear infinite;
+      pointer-events: none;
+    }
+    .dot-ping::after {
+      content: ''; position: absolute; inset: 0; border-radius: 9999px;
+      background: #22d3ee; animation: ping2 1.8s cubic-bezier(0,0,.2,1) infinite;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Card hover glow border */
+    .card { position: relative; transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
+    .card:hover { transform: translateY(-6px); border-color: rgba(34, 211, 238, 0.45); box-shadow: 0 20px 60px -20px rgba(34, 211, 238, 0.35); }
+    .card:hover img { transform: scale(1.07); }
+    .card img { transition: transform .8s ease; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-200 antialiased selection:bg-cyan-400/30 selection:text-white">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5" aria-label="Main navigation">
+      <a href="#top" class="flex items-center gap-2.5 text-white">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 shadow-lg shadow-cyan-500/30">
+          <svg class="h-5 w-5 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <span class="text-lg font-extrabold tracking-tight">Mike<span class="text-cyan-400">Sang</span></span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+        <li><a href="#who" class="transition hover:text-white">Who We Serve</a></li>
+        <li><a href="#expertise" class="transition hover:text-white">Expertise</a></li>
+        <li><a href="#contact" class="transition hover:text-white">Contact</a></li>
+      </ul>
+
+      <a href="mailto:info@mikesang.com" class="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-cyan-300 md:inline-block">Get Protected</a>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="rounded-lg p-2 text-slate-200 md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="glass mx-4 hidden rounded-2xl p-4 md:hidden">
+      <a href="#who" class="block rounded-lg px-4 py-3 font-medium hover:bg-white/5">Who We Serve</a>
+      <a href="#expertise" class="block rounded-lg px-4 py-3 font-medium hover:bg-white/5">Expertise</a>
+      <a href="#contact" class="block rounded-lg px-4 py-3 font-medium hover:bg-white/5">Contact</a>
+      <a href="mailto:info@mikesang.com" class="mt-2 block rounded-lg bg-white px-4 py-3 text-center font-semibold text-ink">Get Protected</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ 1. HERO ============ -->
+    <section class="relative flex min-h-screen items-center overflow-hidden" aria-labelledby="hero-title">
+      <!-- Background image -->
+      <img
+        src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover opacity-35"
+        fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/80 to-ink"></div>
+      <div class="grid-bg absolute inset-0"></div>
+      <div class="scanline"></div>
+
+      <!-- Glow orbs -->
+      <div class="animate-glow absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-cyan-500/25 blur-[120px]"></div>
+      <div class="animate-glow absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-indigo-600/25 blur-[120px]" style="animation-delay:2s"></div>
+
+      <div class="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-6 pb-20 pt-32 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <div class="glass mb-8 inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm">
+            <span class="dot-ping relative h-2.5 w-2.5 rounded-full bg-cyan-400"></span>
+            <span class="font-mono text-xs uppercase tracking-widest text-cyan-300">Threat Defense · Online 24/7</span>
+          </div>
+
+          <h1 id="hero-title" class="text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Securing the<br />
+            <span class="text-gradient">Future of Business.</span>
+          </h1>
+
+          <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+            Elite security consulting for the systems that matter most &mdash; from your cloud and code to your AI models and blockchain assets.
+          </p>
+
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a href="mailto:info@mikesang.com" class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 px-8 py-4 font-semibold text-ink shadow-xl shadow-cyan-500/25 transition hover:shadow-cyan-400/50">
+              Book a Consultation
+              <svg class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#expertise" class="glass inline-flex items-center justify-center rounded-full px-8 py-4 font-semibold text-white transition hover:bg-white/10">
+              Explore Expertise
+            </a>
+          </div>
+
+          <!-- Trust stats -->
+          <dl class="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
+            <div>
+              <dt class="text-sm text-slate-400">Threat Coverage</dt>
+              <dd class="mt-1 text-3xl font-extrabold text-white">360&deg;</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-slate-400">Response</dt>
+              <dd class="mt-1 text-3xl font-extrabold text-white">24/7</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-slate-400">Domains</dt>
+              <dd class="mt-1 text-3xl font-extrabold text-white">4</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Hero visual: glass status console -->
+        <div class="hidden lg:col-span-5 lg:block">
+          <div class="glass animate-float relative rounded-3xl p-6 shadow-2xl shadow-cyan-500/10">
+            <div class="mb-5 flex items-center justify-between">
+              <div class="flex gap-1.5">
+                <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+                <span class="h-3 w-3 rounded-full bg-yellow-400/80"></span>
+                <span class="h-3 w-3 rounded-full bg-green-400/80"></span>
+              </div>
+              <span class="font-mono text-xs text-slate-400">security-posture.live</span>
+            </div>
+
+            <div class="mb-6 flex items-center gap-5">
+              <div class="relative grid h-24 w-24 place-items-center">
+                <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
+                  <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,.08)" stroke-width="8" fill="none"/>
+                  <circle cx="50" cy="50" r="42" stroke="url(#g1)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="18"/>
+                  <defs><linearGradient id="g1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs>
+                </svg>
+                <span class="text-2xl font-extrabold text-white">98</span>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400">Security Score</p>
+                <p class="text-xl font-bold text-white">Hardened</p>
+                <p class="mt-1 text-sm text-emerald-400">&#9650; 42% this quarter</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 font-mono text-sm">
+              <li class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"><span class="text-slate-300">Cloud Perimeter</span><span class="text-emerald-400">SECURE</span></li>
+              <li class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"><span class="text-slate-300">AI Model Guardrails</span><span class="text-emerald-400">SECURE</span></li>
+              <li class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"><span class="text-slate-300">Web App / API</span><span class="text-emerald-400">SECURE</span></li>
+              <li class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"><span class="text-slate-300">Smart Contracts</span><span class="text-cyan-300">AUDITING&hellip;</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <a href="#who" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-slate-400 transition hover:text-white sm:block" aria-label="Scroll to next section">
+        <svg class="h-7 w-7 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <!-- ============ 2. TARGET AUDIENCE ============ -->
+    <section id="who" class="relative py-28" aria-labelledby="who-title">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="font-mono text-sm uppercase tracking-widest text-cyan-400">Who We Serve</p>
+          <h2 id="who-title" class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Security that scales <span class="text-gradient">with you.</span></h2>
+          <p class="mt-5 text-lg text-slate-400">Same elite expertise, sized to fit. Start lean and grow without switching partners.</p>
+        </div>
+
+        <!-- Scale path -->
+        <div class="relative mt-20">
+          <!-- connecting line -->
+          <div class="absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-indigo-500/0 md:block"></div>
+
+          <div class="grid gap-8 md:grid-cols-3">
+            <!-- Startups -->
+            <article class="reveal glass card rounded-3xl p-8">
+              <div class="relative mb-6 grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-cyan-400/5 ring-1 ring-cyan-400/30">
+                <svg class="h-9 w-9 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+              </div>
+              <p class="font-mono text-xs uppercase tracking-widest text-cyan-400">Step 01</p>
+              <h3 class="mt-2 text-2xl font-bold text-white">Startups</h3>
+              <p class="mt-3 text-slate-400">Launch secure from day one. Fast, affordable assessments that win investor and customer trust.</p>
+              <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Security foundations</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>SOC 2 readiness</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Fractional CISO</li>
+              </ul>
+            </article>
+
+            <!-- Growth -->
+            <article class="reveal glass card rounded-3xl p-8" style="transition-delay:.1s">
+              <div class="relative mb-6 grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-indigo-400/20 to-indigo-400/5 ring-1 ring-indigo-400/30">
+                <svg class="h-9 w-9 text-indigo-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+              </div>
+              <p class="font-mono text-xs uppercase tracking-widest text-indigo-400">Step 02</p>
+              <h3 class="mt-2 text-2xl font-bold text-white">Growing Companies</h3>
+              <p class="mt-3 text-slate-400">Scale without new risk. We harden your product and processes as your team and users multiply.</p>
+              <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Penetration testing</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Secure DevOps pipelines</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Cloud architecture review</li>
+              </ul>
+            </article>
+
+            <!-- Enterprise -->
+            <article class="reveal glass card rounded-3xl p-8" style="transition-delay:.2s">
+              <div class="relative mb-6 grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-purple-400/20 to-purple-400/5 ring-1 ring-purple-400/30">
+                <svg class="h-9 w-9 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+              </div>
+              <p class="font-mono text-xs uppercase tracking-widest text-purple-400">Step 03</p>
+              <h3 class="mt-2 text-2xl font-bold text-white">Enterprises</h3>
+              <p class="mt-3 text-slate-400">Defend complex, global operations with strategic programs, red teaming, and board-level reporting.</p>
+              <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Red team operations</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Zero Trust strategy</li>
+                <li class="flex items-center gap-2"><svg class="h-4 w-4 flex-none text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Compliance &amp; governance</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. CORE EXPERTISE ============ -->
+    <section id="expertise" class="relative overflow-hidden py-28" aria-labelledby="expertise-title">
+      <div class="animate-glow absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[140px]"></div>
+
+      <div class="relative mx-auto max-w-7xl px-6">
+        <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <p class="font-mono text-sm uppercase tracking-widest text-cyan-400">Core Expertise</p>
+            <h2 id="expertise-title" class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Four domains.<br /><span class="text-gradient">One trusted partner.</span></h2>
+          </div>
+          <p class="max-w-md text-lg text-slate-400">Deep specialists across today's most critical attack surfaces &mdash; and tomorrow's.</p>
+        </div>
+
+        <div class="mt-16 grid gap-8 md:grid-cols-2">
+
+          <!-- Enterprise Cybersecurity -->
+          <article class="reveal glass card group overflow-hidden rounded-3xl">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=75" alt="Server racks in a secure data center" loading="lazy" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <div class="glass absolute left-6 top-6 grid h-14 w-14 place-items-center rounded-2xl">
+                <svg class="h-7 w-7 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-white">Enterprise Cybersecurity</h3>
+              <p class="mt-3 text-slate-400">End-to-end protection for your networks, cloud, endpoints and people &mdash; built on Zero Trust principles.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300 ring-1 ring-cyan-400/20">Zero Trust</span>
+                <span class="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300 ring-1 ring-cyan-400/20">Cloud Security</span>
+                <span class="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300 ring-1 ring-cyan-400/20">Incident Response</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- AI Systems Security -->
+          <article class="reveal glass card group overflow-hidden rounded-3xl" style="transition-delay:.1s">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=75" alt="Abstract visualization of artificial intelligence" loading="lazy" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <div class="glass absolute left-6 top-6 grid h-14 w-14 place-items-center rounded-2xl">
+                <svg class="h-7 w-7 text-indigo-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-white">AI Systems Security</h3>
+              <p class="mt-3 text-slate-400">Protect your LLMs, agents and ML pipelines from prompt injection, data poisoning and model theft.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-indigo-400/10 px-3 py-1 text-xs font-medium text-indigo-300 ring-1 ring-indigo-400/20">LLM Red Teaming</span>
+                <span class="rounded-full bg-indigo-400/10 px-3 py-1 text-xs font-medium text-indigo-300 ring-1 ring-indigo-400/20">Guardrails</span>
+                <span class="rounded-full bg-indigo-400/10 px-3 py-1 text-xs font-medium text-indigo-300 ring-1 ring-indigo-400/20">AI Governance</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Web Application Security -->
+          <article class="reveal glass card group overflow-hidden rounded-3xl">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=75" alt="Source code on a developer's screen" loading="lazy" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <div class="glass absolute left-6 top-6 grid h-14 w-14 place-items-center rounded-2xl">
+                <svg class="h-7 w-7 text-sky-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01M10 14l-2 2 2 2M14 14l2 2-2 2"/></svg>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-white">Web Application Security</h3>
+              <p class="mt-3 text-slate-400">Find and fix vulnerabilities in your apps and APIs before attackers do &mdash; covering the full OWASP Top 10.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-300 ring-1 ring-sky-400/20">Pen Testing</span>
+                <span class="rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-300 ring-1 ring-sky-400/20">API Security</span>
+                <span class="rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-300 ring-1 ring-sky-400/20">Code Review</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Crypto & Web3 Security -->
+          <article class="reveal glass card group overflow-hidden rounded-3xl" style="transition-delay:.1s">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=75" alt="Abstract blockchain network visualization" loading="lazy" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <div class="glass absolute left-6 top-6 grid h-14 w-14 place-items-center rounded-2xl">
+                <svg class="h-7 w-7 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-white">Crypto &amp; Web3 Security</h3>
+              <p class="mt-3 text-slate-400">Smart contract audits, wallet security and protocol reviews to safeguard digital assets on-chain.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full bg-purple-400/10 px-3 py-1 text-xs font-medium text-purple-300 ring-1 ring-purple-400/20">Smart Contract Audits</span>
+                <span class="rounded-full bg-purple-400/10 px-3 py-1 text-xs font-medium text-purple-300 ring-1 ring-purple-400/20">DeFi</span>
+                <span class="rounded-full bg-purple-400/10 px-3 py-1 text-xs font-medium text-purple-300 ring-1 ring-purple-400/20">Key Management</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="px-6 pb-28" aria-labelledby="cta-title">
+      <div class="reveal relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-white/10">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-ink/80 to-indigo-600/30"></div>
+        <div class="relative px-8 py-16 text-center sm:px-16">
+          <h2 id="cta-title" class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">Ready to lock it down?</h2>
+          <p class="mx-auto mt-4 max-w-xl text-lg text-slate-300">Tell us what you're building. We'll tell you how to protect it &mdash; no jargon, no obligation.</p>
+          <a href="mailto:info@mikesang.com" class="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-ink transition hover:bg-cyan-300">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+            info@mikesang.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 4. FOOTER ============ -->
+  <footer id="contact" class="border-t border-white/10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-12 md:flex-row">
+      <a href="#top" class="flex items-center gap-2.5 text-white">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500">
+          <svg class="h-4 w-4 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
+        </span>
+        <span class="font-extrabold tracking-tight">Mike<span class="text-cyan-400">Sang</span></span>
+      </a>
+
+      <nav aria-label="Footer navigation">
+        <ul class="flex gap-8 text-sm text-slate-400">
+          <li><a href="#who" class="transition hover:text-white">Who We Serve</a></li>
+          <li><a href="#expertise" class="transition hover:text-white">Expertise</a></li>
+        </ul>
+      </nav>
+
+      <a href="mailto:info@mikesang.com" class="group flex items-center gap-2 text-lg font-semibold text-white">
+        <svg class="h-5 w-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+        <span class="transition group-hover:text-cyan-300">info@mikesang.com</span>
+      </a>
+    </div>
+    <div class="border-t border-white/5 py-6 text-center text-sm text-slate-500">
+      &copy; <span id="year">2026</span> MikeSang Security Consulting &middot; www.mikesang.com
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Glass navbar on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      const scrolled = window.scrollY > 20;
+      nav.classList.toggle('glass', scrolled);
+      nav.classList.toggle('!border-x-0', scrolled);
+      nav.classList.toggle('!border-t-0', scrolled);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
+
